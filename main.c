@@ -7,7 +7,7 @@
 #include <linux/workqueue.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
+MODULE_AUTHOR("079bei");
 MODULE_DESCRIPTION("Battery-Aware Scheduler Demo (simulatable)");
 
 #define DEFAULT_NICE 0
