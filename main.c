@@ -1,4 +1,3 @@
-
 #include <linux/init.h>
 #include <linux/jiffies.h>
 #include <linux/kernel.h>
@@ -66,11 +65,17 @@ static void adjust_task_weights(struct work_struct *work) {
       if (battery) {
         if (task_nice(task) != BATTERY_NICE) {
           set_user_nice(task, BATTERY_NICE);
+          pr_info(
+              "battery-aware: Adjusted PID %d (%s) to nice %d (battery mode)\n",
+              task->pid, task->comm, BATTERY_NICE);
           adjusted++;
         }
       } else {
         if (task_nice(task) != DEFAULT_NICE) {
           set_user_nice(task, DEFAULT_NICE);
+          pr_info(
+              "battery-aware: Adjusted PID %d (%s) to nice %d (default mode)\n",
+              task->pid, task->comm, DEFAULT_NICE);
           adjusted++;
         }
       }
